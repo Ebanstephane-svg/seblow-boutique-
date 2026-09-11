@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEBLOW — Osez le choix</title>
+    <meta name="description" content="SEBLOW — ta routine lifestyle : des milliers de pépites à portée de main, à découvrir et à s'offrir directement depuis ton canapé.">
+    <!-- Tailwind CSS -->
+    <script src="https://jsdelivr.net"></script>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        @import url('https://googleapis.com');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
+
+    <!-- Top Notification Banner -->
+    <div class="bg-gradient-to-r from-rose-600 via-purple-600 to-indigo-600 text-white text-xs md:text-sm font-medium py-2 px-4 text-center shadow-md">
+        <span>🚀 SEBLOW — Osez le choix : des milliers de pépites à portée de main, à découvrir et à s'offrir directement depuis ton canapé.</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="filterCategory('all')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-purple-600 flex items-center justify-center shadow-lg shadow-rose-500/20">
+                    <i class="fa-solid fa-bolt text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">SEBLOW</span>
+                    <span class="block text-[10px] font-bold uppercase tracking-widest text-rose-400">Osez le choix</span>
+                </div>
+            </div>
+
+            <!-- Search Bar Desktop -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8">
+                <div class="relative w-full">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Rechercher une pépite lifestyle..." 
+                        class="w-full pl-11 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-full text-sm text-slate-200 focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500 transition">
+                </div>
+            </div>
+
+            <!-- Nav Actions -->
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleModal('aboutModal', true)" class="hidden sm:flex items-center space-x-2 text-sm font-medium text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-slate-900 transition">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>À propos</span>
+                </button>
+                <button onclick="toggleModal('cartModal', true)" class="relative p-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-full text-slate-200 transition">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-rose-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md hidden">0</span>
+                </button>
+                <button onclick="toggleModal('adminModal', true)" class="p-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-full text-slate-300 hover:text-white transition" title="Administration">
+                    <i class="fa-solid fa-lock text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <!-- Hero Banner -->
+        <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-purple-950/40 to-slate-900 border border-slate-800/80 p-8 md:p-12 mb-12 shadow-2xl">
+            <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20 mb-6">
+                    <i class="fa-solid fa-fire"></i>
+                    <span>Collection Exclusive 2026</span>
+                </span>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+                    Osez le choix avec SEBLOW.
+                </h1>
+                <p class="text-slate-400 text-base md:text-lg mb-8">
+                    SEBLOW — ta routine lifestyle : des milliers de pépites à portée de main, à découvrir et à s'offrir directement depuis ton canapé.
+                </p>
+                <div class="flex flex-wrap gap-3" id="categoryPills">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Catalog Section -->
+        <div id="dynamicCatalogContainer" class="space-y-16">
+            <!-- Généré dynamiquement -->
+        </div>
+    </main>
+
+    <!-- FAQ & Slider -->
+    <section class="border-t border-slate-800/80 bg-slate-900/40 py-12 mt-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+            <h2 class="text-xl md:text-2xl font-bold text-white mb-2">Questions Fréquentes & Instants SEBLOW</h2>
+            <p class="text-slate-400 text-sm">Tout ce que tu dois savoir sur tes commandes et ton expérience.</p>
+        </div>
+        <div class="flex space-x-6 overflow-x-auto hide-scrollbar px-4 pb-4 max-w-7xl mx-auto" id="scrollingFaqContainer">
+            <!-- Généré dynamiquement -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-8 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <p>© 2026 SEBLOW Group. Tous droits réservés.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-slate-400 transition">Confidentialité</a>
+                <a href="#" class="hover:text-slate-400 transition">Conditions Générales</a>
+                <a href="#" onclick="toggleModal('aboutModal', true); return false;" class="hover:text-slate-400 transition">À propos</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Panier -->
+    <div id="cartModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-slate-900 border-l border-slate-800 h-full flex flex-col p-6 shadow-2xl">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-bag-shopping text-rose-500"></i>
+                    <span>Ton Panier SEBLOW</span>
+                </h3>
+                <button onclick="toggleModal('cartModal', false)" class="text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="cartItemsList" class="flex-1 overflow-y-auto py-4 space-y-4">
+                <!-- Panier vide par défaut -->
+            </div>
+            <div class="pt-4 border-t border-slate-800 space-y-4">
+                <div class="flex justify-between text-base font-medium text-white">
+                    <span>Total</span>
+                    <span id="cartTotal">0.00 €</span>
+                </div>
+                <button class="w-full py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-xl font-semibold shadow-lg shadow-rose-600/20 transition">
+                    Passer la commande
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals Supplémentaires (À Propos / Admin) -->
+    <div id="aboutModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4">
+            <h3 class="text-xl font-bold text-white">À propos de SEBLOW</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">SEBLOW est votre concept store digital premium, conçu pour dénicher les meilleures tendances lifestyle, mode et tech directement depuis chez vous.</p>
+            <button onclick="toggleModal('aboutModal', false)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-medium transition">Fermer</button>
+        </div>
+    </div>
+
+    <div id="adminModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4">
+            <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-lock text-rose-500 mr-2"></i>Administration</h3>
+            <p class="text-sm text-slate-400">Espace restreint aux gestionnaires de la boutique SEBLOW.</p>
