@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fr" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SEBLOW — Osez le choix</title>
     <meta name="description" content="SEBLOW — ta routine lifestyle : des milliers de pépites à portée de main, à découvrir et à s'offrir directement depuis ton canapé.">
-    <!-- Tailwind CSS -->
-    <script src="https://jsdelivr.net"></script>
+    <!-- Tailwind CSS v4 & FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         @import url('https://googleapis.com');
@@ -87,18 +87,18 @@
 
         <!-- Catalog Section -->
         <div id="dynamicCatalogContainer" class="space-y-16">
-            <!-- Généré dynamiquement -->
+            <!-- Injecté dynamiquement par le script -->
         </div>
     </main>
 
-    <!-- FAQ & Slider -->
+    <!-- Question/Réponse & Images Défilantes -->
     <section class="border-t border-slate-800/80 bg-slate-900/40 py-12 mt-16 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
             <h2 class="text-xl md:text-2xl font-bold text-white mb-2">Questions Fréquentes & Instants SEBLOW</h2>
             <p class="text-slate-400 text-sm">Tout ce que tu dois savoir sur tes commandes et ton expérience.</p>
         </div>
         <div class="flex space-x-6 overflow-x-auto hide-scrollbar px-4 pb-4 max-w-7xl mx-auto" id="scrollingFaqContainer">
-            <!-- Généré dynamiquement -->
+            <!-- Injecté dynamiquement -->
         </div>
     </section>
 
@@ -125,7 +125,7 @@
                 <button onclick="toggleModal('cartModal', false)" class="text-slate-400 hover:text-white p-2"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             <div id="cartItemsList" class="flex-1 overflow-y-auto py-4 space-y-4">
-                <!-- Panier vide par défaut -->
+                <!-- Injecté dynamiquement -->
             </div>
             <div class="pt-4 border-t border-slate-800 space-y-4">
                 <div class="flex justify-between text-base font-medium text-white">
@@ -139,16 +139,19 @@
         </div>
     </div>
 
-    <!-- Modals Supplémentaires (À Propos / Admin) -->
+    <!-- Modal À Propos (Nettoyé des phrases parasites) -->
     <div id="aboutModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4">
-            <h3 class="text-xl font-bold text-white">À propos de SEBLOW</h3>
-            <p class="text-sm text-slate-400 leading-relaxed">SEBLOW est votre concept store digital premium, conçu pour dénicher les meilleures tendances lifestyle, mode et tech directement depuis chez vous.</p>
-            <button onclick="toggleModal('aboutModal', false)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-medium transition">Fermer</button>
-        </div>
-    </div>
-
-    <div id="adminModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4">
-            <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-lock text-rose-500 mr-2"></i>Administration</h3>
-            <p class="text-sm text-slate-400">Espace restreint aux gestionnaires de la boutique SEBLOW.</p>
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 class="text-xl font-bold text-white">À propos de SEBLOW</h3>
+                <button onclick="toggleModal('aboutModal', false)" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p class="text-sm text-slate-400 leading-relaxed">
+                SEBLOW — ta routine lifestyle : des milliers de pépites à portée de main, à découvrir et à s'offrir directement depuis ton canapé.
+            </p>
+            <div>
+                <h4 class="text-sm font-bold text-white mb-3">Notre Équipe</h4>
+                <div id="aboutTeamContainer" class="grid grid-cols-2 gap-4">
+                    <!-- Chargé dynamiquement depuis l'admin -->
+                </div>
+            </div>
